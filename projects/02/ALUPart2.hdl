@@ -1,0 +1,14 @@
+CHIP ALUPart2 {
+    IN  
+        result[16];
+
+    OUT 
+        z,
+        n;
+     
+    PARTS:
+    And(a=result[15],b=true,out=n);
+    Or8Way(in=result[0..7],out=07or);
+    Or8Way(in=result[8..15],out=815or);
+    Or(a=07or,b=815or,out=z);
+} 
