@@ -10,8 +10,7 @@ CHIP ALUPart1 {
     Not(in=n,out=nn);
     Not(in=z,out=nz);
     Mux16(a=in,b[0..15]=false,sel=z,out=outzero);
-    Not16(in=outzero,out=noutzero);
-    Inc16(in=noutzero,out=negated);
+    Not16(in=outzero,out=negated);
     Mux16(a=outzero,b=negated,sel=n,out=out);
     
 } 

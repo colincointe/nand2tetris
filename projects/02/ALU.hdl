@@ -49,10 +49,8 @@ CHIP ALU {
     And16(a=tx,b=ty,out=and);
     Mux16(a=addition,b=and,sel=nf,out=result);
     Not16(in=result,out=nresult);
-    Inc16(in=nresult,out=nresultinc);
-    Mux16(a=result,b=nresultinc,sel=no,out=tempout);
-    ALUPart2(in=tempout,n=nzr,z=zr);
+    Mux16(a=result,b=nresult,sel=no,out=tempout);
+    ALUPart2(result=tempout,n=ng,z=nzr);
     And16(a=tempout,b[0..15]=true,out=out);
     Not(in=nzr,out=zr);
-
 }
