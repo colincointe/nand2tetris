@@ -12,3 +12,52 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+(BEGINNING)
+@24576
+D=M
+@ELSE
+D;JEQ
+//IF KEY PRESSED
+@16384
+D=A
+@i
+M=D
+(LOOPIF)
+@32767
+D=A
+@i
+A=M
+M=D
+M=M+D
+M=M+1
+@i
+M=M+1
+@24576
+D=A
+@i
+D=D-M
+@LOOPIF
+D;JNE
+@BEGINNING
+0;JMP
+(ELSE)
+//IF KEY NOT PRESSED
+@16384
+D=A
+@i
+M=D
+(LOOPELSE)
+@i
+A=M
+M=0
+@i
+M=M+1
+@24576
+D=A
+@i
+D=D-M
+@LOOPELSE
+D;JNE
+@BEGINNING
+0;JMP
